@@ -1,0 +1,21 @@
+# Object files.
+*.exe
+*.dll
+*.ocx
+*.oca
+
+# Visual Basic 6
+*.vbw
+*.csi
+*.exp
+*.lib
+*.lvw
+*.dca
+*.scc
+*.tmp
+*.log
+
+# Misc.
+.DS_Store
+Thumbs.db
+
