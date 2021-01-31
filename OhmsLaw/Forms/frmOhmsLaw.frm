@@ -116,25 +116,26 @@ Public Sub Calculate()
     
     ' Calculate voltage.
     If txtVoltage.Text = vbNullString Then
-        txtVoltage.Text = OhmsLawVoltage(GetNum(txtCurrent), GetNum(txtResistance), _
-            GetNum(txtPower))
+        txtVoltage.Text = NumberToMagString(OhmsLawVoltage(GetNum(txtCurrent), _
+            GetNum(txtResistance), GetNum(txtPower)))
     End If
     
     ' Calculate current.
     If txtCurrent.Text = vbNullString Then
-        txtCurrent.Text = OhmsLawCurrent(GetNum(txtVoltage), GetNum(txtResistance), _
-            GetNum(txtPower))
+        txtCurrent.Text = NumberToMagString(OhmsLawCurrent(GetNum(txtVoltage), _
+            GetNum(txtResistance), GetNum(txtPower)))
     End If
     
     ' Calculate resistance.
     If txtResistance.Text = vbNullString Then
-        txtResistance.Text = OhmsLawResistance(GetNum(txtVoltage), _
-            GetNum(txtCurrent), GetNum(txtPower))
+        txtResistance.Text = NumberToMagString(OhmsLawResistance(GetNum(txtVoltage), _
+            GetNum(txtCurrent), GetNum(txtPower)))
     End If
     
     ' Calculate power.
     If txtPower.Text = vbNullString Then
-        txtPower.Text = OhmsLawPower(GetNum(txtVoltage), GetNum(txtCurrent), 0)
+        txtPower.Text = NumberToMagString(OhmsLawPower(GetNum(txtVoltage), _
+            GetNum(txtCurrent), 0))
     End If
 End Sub
 
