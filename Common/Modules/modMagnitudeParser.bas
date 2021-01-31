@@ -21,9 +21,23 @@ End Function
 
 ' Converts a number into a string with magnitude.
 Public Function NumberToMagString(dblNumber As Double) As String
-    Dim strBuffer As String
+    Dim arrMagnitude As Variant
+    Dim intIndex As Integer
     
-    NumberToMagString = strBuffer
+    ' Set the magnitudes and try to get a good match for the number.
+    arrMagnitude = Array("f", "p", "n", "u", "m", "k", "M", "G", "T")
+    For intIndex = 0 To UBound(arrMagnitude)
+        Dim dblBuffer As Double
+        dblBuffer = dblNumber / MagnitudeValue(arrMagnitude(intIndex))
+        
+        If (dblBuffer >= 1#) And (dblBuffer < 1000#) Then
+            NumberToMagString = dblBuffer & arrMagnitude(intIndex)
+            Exit Function
+        End If
+    Next intIndex
+    
+    ' Couldn't parse this thing.
+    NumberToMagString = CStr(dblNumber)
 End Function
 
 ' Gets the size of a magnitude.
