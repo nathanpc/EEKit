@@ -1,3 +1,4 @@
 VBGROUP 5.0
 Project=Launcher\Launcher.vbp
-StartupProject=OhmsLaw\OhmsLaw.vbp
+Project=OhmsLaw\OhmsLaw.vbp
+StartupProject=VoltageDivider\VoltageDivider.vbp
