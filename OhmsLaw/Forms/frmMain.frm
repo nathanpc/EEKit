@@ -15,28 +15,28 @@ Begin VB.Form frmMain
       Height          =   255
       Left            =   2760
       TabIndex        =   14
-      Top             =   1200
+      Top             =   1230
       Width           =   255
    End
    Begin VB.CheckBox chkResistance 
       Height          =   255
       Left            =   2760
       TabIndex        =   13
-      Top             =   840
+      Top             =   870
       Width           =   255
    End
    Begin VB.CheckBox chkCurrent 
       Height          =   255
       Left            =   2760
       TabIndex        =   12
-      Top             =   480
+      Top             =   510
       Width           =   255
    End
    Begin VB.CheckBox chkVoltage 
       Height          =   255
       Left            =   2760
       TabIndex        =   11
-      Top             =   120
+      Top             =   150
       Width           =   255
    End
    Begin VB.PictureBox picHelp 
@@ -103,7 +103,7 @@ Begin VB.Form frmMain
       Height          =   255
       Left            =   0
       TabIndex        =   4
-      Top             =   1200
+      Top             =   1230
       Width           =   1215
    End
    Begin VB.Label Label3 
@@ -112,7 +112,7 @@ Begin VB.Form frmMain
       Height          =   255
       Left            =   0
       TabIndex        =   3
-      Top             =   840
+      Top             =   870
       Width           =   1215
    End
    Begin VB.Label Label2 
@@ -121,7 +121,7 @@ Begin VB.Form frmMain
       Height          =   255
       Left            =   0
       TabIndex        =   2
-      Top             =   480
+      Top             =   510
       Width           =   1215
    End
    Begin VB.Label Label1 
@@ -130,7 +130,7 @@ Begin VB.Form frmMain
       Height          =   255
       Left            =   0
       TabIndex        =   0
-      Top             =   120
+      Top             =   150
       Width           =   1215
    End
 End
