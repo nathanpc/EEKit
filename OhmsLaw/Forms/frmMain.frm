@@ -1,5 +1,5 @@
 VERSION 5.00
-Begin VB.Form frmOhmsLaw 
+Begin VB.Form frmMain 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Ohm's Law"
    ClientHeight    =   1605
@@ -45,7 +45,7 @@ Begin VB.Form frmOhmsLaw
       ForeColor       =   &H80000008&
       Height          =   255
       Left            =   4200
-      Picture         =   "frmOhmsLaw.frx":0000
+      Picture         =   "frmMain.frx":0000
       ScaleHeight     =   255
       ScaleWidth      =   255
       TabIndex        =   10
@@ -134,7 +134,7 @@ Begin VB.Form frmOhmsLaw
       Width           =   1215
    End
 End
-Attribute VB_Name = "frmOhmsLaw"
+Attribute VB_Name = "frmMain"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True

@@ -1,10 +1,14 @@
 Type=Exe
-Form=Forms\frmOhmsLaw.frm
 Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
 Object={831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0; MSCOMCTL.OCX
 Module=modMagnitudeParser; ..\Common\Modules\modMagnitudeParser.bas
 Module=modOhmsLaw; ..\Common\Modules\modOhmsLaw.bas
-Startup="frmOhmsLaw"
+ResFile32="..\Common\Resources\resManifest.res"
+Module=modMain; ..\Common\Modules\modMain.bas
+Form=Forms\frmMain.frm
+Startup="Sub Main"
+HelpFile=""
+ExeName32="OhmsLaw.exe"
 Command32=""
 Name="OhmsLaw"
 HelpContextID="0"
