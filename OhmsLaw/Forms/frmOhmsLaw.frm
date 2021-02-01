@@ -5,18 +5,46 @@ Begin VB.Form frmOhmsLaw
    ClientHeight    =   1605
    ClientLeft      =   7140
    ClientTop       =   5250
-   ClientWidth     =   4320
+   ClientWidth     =   4545
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   1605
-   ScaleWidth      =   4320
+   ScaleWidth      =   4545
+   Begin VB.CheckBox chkPower 
+      Height          =   255
+      Left            =   2760
+      TabIndex        =   14
+      Top             =   1200
+      Width           =   255
+   End
+   Begin VB.CheckBox chkResistance 
+      Height          =   255
+      Left            =   2760
+      TabIndex        =   13
+      Top             =   840
+      Width           =   255
+   End
+   Begin VB.CheckBox chkCurrent 
+      Height          =   255
+      Left            =   2760
+      TabIndex        =   12
+      Top             =   480
+      Width           =   255
+   End
+   Begin VB.CheckBox chkVoltage 
+      Height          =   255
+      Left            =   2760
+      TabIndex        =   11
+      Top             =   120
+      Width           =   255
+   End
    Begin VB.PictureBox picHelp 
       Appearance      =   0  'Flat
       BorderStyle     =   0  'None
       ForeColor       =   &H80000008&
       Height          =   255
-      Left            =   3960
+      Left            =   4200
       Picture         =   "frmOhmsLaw.frx":0000
       ScaleHeight     =   255
       ScaleWidth      =   255
@@ -27,7 +55,7 @@ Begin VB.Form frmOhmsLaw
    Begin VB.CommandButton cmdReset 
       Caption         =   "Reset"
       Height          =   375
-      Left            =   2880
+      Left            =   3120
       TabIndex        =   9
       Top             =   600
       Width           =   1335
@@ -36,7 +64,7 @@ Begin VB.Form frmOhmsLaw
       Caption         =   "Calculate"
       Default         =   -1  'True
       Height          =   375
-      Left            =   2880
+      Left            =   3120
       TabIndex        =   8
       Top             =   120
       Width           =   1335
@@ -121,14 +149,17 @@ Option Explicit
 ' Shows a nice help dialog.
 Public Sub ShowHelp()
     MsgBox "Enter only two fields and either press Return or click on the " & _
-        "Calculate button. You always need to leave 2 fields blank so tha the " & _
-        "calculator knows what you want to calculate. You can also use the " & _
-        "check boxes to auto-clear a field before calculating.", _
-        vbOKOnly + vbInformation, "Help"
+        "Calculate button. " & vbCrLf & vbCrLf & "You always need to leave 2 " & _
+        "fields blank so that the calculator knows what you want to " & _
+        "calculate. You can also use the check boxes to auto-clear a field " & _
+        "before calculating.", vbOKOnly + vbInformation, "Help"
 End Sub
 
 ' Performs the calculations.
 Public Sub Calculate()
+    ' Automatically clear some fields.
+    AutoClearFields
+    
     ' Check empty field requirements.
     If EmptyFields <> 2 Then
         MsgBox "To perform a calculation we need to have exactly 2 empty fields.", _
@@ -158,6 +189,25 @@ Public Sub Calculate()
     If txtPower.Text = vbNullString Then
         txtPower.Text = NumberToMagString(OhmsLawPower(GetNum(txtVoltage), _
             GetNum(txtCurrent), 0))
+    End If
+End Sub
+
+' Automatically clears checked fields.
+Public Sub AutoClearFields()
+    If chkVoltage.Value = vbChecked Then
+        txtVoltage.Text = ""
+    End If
+    
+    If chkCurrent.Value = vbChecked Then
+        txtCurrent.Text = ""
+    End If
+    
+    If chkResistance.Value = vbChecked Then
+        txtResistance.Text = ""
+    End If
+    
+    If chkPower.Value = vbChecked Then
+        txtPower.Text = ""
     End If
 End Sub
 
