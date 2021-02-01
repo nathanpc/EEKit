@@ -1,6 +1,7 @@
 Type=Exe
 Form=Forms\frmMain.frm
 Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
+Module=modVoltageDivider; ..\Common\Modules\modVoltageDivider.bas
 Startup="frmMain"
 Command32=""
 Name="VoltageDivider"
