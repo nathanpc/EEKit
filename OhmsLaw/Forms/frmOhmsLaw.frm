@@ -11,6 +11,19 @@ Begin VB.Form frmOhmsLaw
    MinButton       =   0   'False
    ScaleHeight     =   1605
    ScaleWidth      =   4320
+   Begin VB.PictureBox picHelp 
+      Appearance      =   0  'Flat
+      BorderStyle     =   0  'None
+      ForeColor       =   &H80000008&
+      Height          =   255
+      Left            =   3960
+      Picture         =   "frmOhmsLaw.frx":0000
+      ScaleHeight     =   255
+      ScaleWidth      =   255
+      TabIndex        =   10
+      Top             =   1270
+      Width           =   255
+   End
    Begin VB.CommandButton cmdReset 
       Caption         =   "Reset"
       Height          =   375
@@ -105,6 +118,15 @@ Attribute VB_Exposed = False
 
 Option Explicit
 
+' Shows a nice help dialog.
+Public Sub ShowHelp()
+    MsgBox "Enter only two fields and either press Return or click on the " & _
+        "Calculate button. You always need to leave 2 fields blank so tha the " & _
+        "calculator knows what you want to calculate. You can also use the " & _
+        "check boxes to auto-clear a field before calculating.", _
+        vbOKOnly + vbInformation, "Help"
+End Sub
+
 ' Performs the calculations.
 Public Sub Calculate()
     ' Check empty field requirements.
@@ -193,6 +215,11 @@ End Sub
 ' Form just loaded.
 Private Sub Form_Load()
     ResetFields
+End Sub
+
+' Help button clicked.
+Private Sub picHelp_Click()
+    ShowHelp
 End Sub
 
 ' Current text field key pressed.
