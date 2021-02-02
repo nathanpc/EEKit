@@ -42,13 +42,21 @@ Begin VB.Form frmMain
       TabIndex        =   1
       Top             =   360
       Width           =   7695
-      Begin VB.CommandButton Command1 
-         Caption         =   "Command1"
-         Height          =   1455
-         Left            =   1560
+      Begin VB.CommandButton cmdVoltageDivider 
+         Caption         =   "Voltage Divider"
+         Height          =   855
+         Left            =   2040
+         TabIndex        =   5
+         Top             =   120
+         Width           =   1695
+      End
+      Begin VB.CommandButton cmdOhmsLaw 
+         Caption         =   "Ohm's Law"
+         Height          =   855
+         Left            =   120
          TabIndex        =   3
-         Top             =   1080
-         Width           =   3135
+         Top             =   120
+         Width           =   1695
       End
    End
    Begin ComctlLib.TabStrip tbsMain 
@@ -64,11 +72,13 @@ Begin VB.Form frmMain
          NumTabs         =   2
          BeginProperty Tab1 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "Basics"
+            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
          BeginProperty Tab2 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "Advanced"
+            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
