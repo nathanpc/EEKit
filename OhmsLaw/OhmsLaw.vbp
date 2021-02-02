@@ -6,6 +6,7 @@ Module=modOhmsLaw; ..\Common\Modules\modOhmsLaw.bas
 ResFile32="..\Common\Resources\resManifest.res"
 Module=modMain; ..\Common\Modules\modMain.bas
 Form=Forms\frmMain.frm
+Module=modControlUtilities; ..\Common\Modules\modControlUtilities.bas
 Startup="Sub Main"
 HelpFile=""
 ExeName32="OhmsLaw.exe"

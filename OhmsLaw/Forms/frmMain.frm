@@ -169,26 +169,26 @@ Public Sub Calculate()
     
     ' Calculate voltage.
     If txtVoltage.Text = vbNullString Then
-        txtVoltage.Text = NumberToMagString(OhmsLawVoltage(GetNum(txtCurrent), _
-            GetNum(txtResistance), GetNum(txtPower)))
+        txtVoltage.Text = NumberToMagString(OhmsLawVoltage(GetTextNum(txtCurrent), _
+            GetTextNum(txtResistance), GetTextNum(txtPower)))
     End If
     
     ' Calculate current.
     If txtCurrent.Text = vbNullString Then
-        txtCurrent.Text = NumberToMagString(OhmsLawCurrent(GetNum(txtVoltage), _
-            GetNum(txtResistance), GetNum(txtPower)))
+        txtCurrent.Text = NumberToMagString(OhmsLawCurrent(GetTextNum(txtVoltage), _
+            GetTextNum(txtResistance), GetTextNum(txtPower)))
     End If
     
     ' Calculate resistance.
     If txtResistance.Text = vbNullString Then
-        txtResistance.Text = NumberToMagString(OhmsLawResistance(GetNum(txtVoltage), _
-            GetNum(txtCurrent), GetNum(txtPower)))
+        txtResistance.Text = NumberToMagString(OhmsLawResistance(GetTextNum(txtVoltage), _
+            GetTextNum(txtCurrent), GetTextNum(txtPower)))
     End If
     
     ' Calculate power.
     If txtPower.Text = vbNullString Then
-        txtPower.Text = NumberToMagString(OhmsLawPower(GetNum(txtVoltage), _
-            GetNum(txtCurrent), 0))
+        txtPower.Text = NumberToMagString(OhmsLawPower(GetTextNum(txtVoltage), _
+            GetTextNum(txtCurrent), 0))
     End If
 End Sub
 
@@ -241,15 +241,6 @@ Public Function EmptyFields() As Integer
     End If
     
     EmptyFields = intCount
-End Function
-
-' Gets the number from a TextBox.
-Public Function GetNum(txtBox As TextBox) As Double
-    Dim dblValue As Double
-    On Error Resume Next
-    
-    dblValue = ParseNumber(txtBox.Text)
-    GetNum = dblValue
 End Function
 
 ' Calculate button clicked.
