@@ -196,15 +196,128 @@ Attribute VB_Exposed = False
 
 Option Explicit
 
+' Calculates the voltage divider parameters.
+Public Sub Calculate()
+    Dim dblPower As Double
+    Dim dblCurrent As Double
+    
+    ' Automatically clear some fields.
+    AutoClearFields
+    
+    ' Check empty field requirements.
+    If EmptyFields <> 1 Then
+        MsgBox "To perform a calculation we need to have exactly 1 empty field.", _
+            vbOKOnly + vbExclamation, "Invalid Input"
+        Exit Sub
+    End If
+    
+    ' Calculate input voltage.
+    If txtVin.Text = vbNullString Then
+        txtVin.Text = NumberToMagString(VoltDividerVin(GetTextNum(txtR1), _
+            GetTextNum(txtVout), GetTextNum(txtR2), GetTextNum(txtVgnd)))
+    End If
+    
+    ' Calculate R1 value.
+    If txtR1.Text = vbNullString Then
+        txtR1.Text = NumberToMagString(VoltDividerR1(GetTextNum(txtVin), _
+            GetTextNum(txtVout), GetTextNum(txtR2), GetTextNum(txtVgnd)))
+    End If
+    
+    ' Calculate output voltage.
+    If txtVout.Text = vbNullString Then
+        txtVout.Text = NumberToMagString(VoltDividerVout(GetTextNum(txtVin), _
+            GetTextNum(txtR1), GetTextNum(txtR2), GetTextNum(txtVgnd)))
+    End If
+    
+    ' Calculate R2 value.
+    If txtR2.Text = vbNullString Then
+        txtR2.Text = NumberToMagString(VoltDividerR2(GetTextNum(txtVin), _
+            GetTextNum(txtR1), GetTextNum(txtVout), GetTextNum(txtVgnd)))
+    End If
+    
+    ' Calculate ground voltage.
+    If txtVgnd.Text = vbNullString Then
+        txtVgnd.Text = NumberToMagString(VoltDividerVgnd(GetTextNum(txtVin), _
+            GetTextNum(txtR1), GetTextNum(txtVout), GetTextNum(txtR2)))
+    End If
+    
+    ' Calculate power.
+    dblPower = OhmsLawPower(ParseNumber(txtVin.Text) - ParseNumber(txtVgnd.Text), _
+        0, ParseNumber(txtR1.Text) + ParseNumber(txtR2.Text))
+    lblPower.Caption = "Power: " & vbCrLf & NumberToMagString(dblPower)
+    
+    ' Calculate current.
+    dblCurrent = OhmsLawCurrent(ParseNumber(txtVin.Text) - ParseNumber(txtVgnd.Text), _
+        ParseNumber(txtR1.Text) + ParseNumber(txtR2.Text), 0)
+    lblCurrent.Caption = "Current: " & vbCrLf & NumberToMagString(dblCurrent)
+End Sub
+
+' Automatically clears checked fields.
+Public Sub AutoClearFields()
+    If optVin.Value Then
+        txtVin.Text = ""
+    End If
+    
+    If optR1.Value Then
+        txtR1.Text = ""
+    End If
+    
+    If optVout.Value Then
+        txtVout.Text = ""
+    End If
+    
+    If optR2.Value Then
+        txtR2.Text = ""
+    End If
+    
+    If optVgnd.Value Then
+        txtVgnd.Text = ""
+    End If
+End Sub
+
+' Counts the number of empty fields.
+Public Function EmptyFields() As Integer
+    Dim intCount As Integer
+    
+    ' Count how many empty fields we have.
+    If txtVin.Text = vbNullString Then
+        intCount = intCount + 1
+    End If
+    
+    If txtR1.Text = vbNullString Then
+        intCount = intCount + 1
+    End If
+    
+    If txtVout.Text = vbNullString Then
+        intCount = intCount + 1
+    End If
+    
+    If txtR2.Text = vbNullString Then
+        intCount = intCount + 1
+    End If
+    
+    If txtVgnd.Text = vbNullString Then
+        intCount = intCount + 1
+    End If
+    
+    EmptyFields = intCount
+End Function
+
 ' Resets all the fields.
 Public Sub ResetFields()
+    ' Reset text fields.
     txtVin.Text = ""
     txtVgnd.Text = "0"
     txtR1.Text = ""
     txtVout.Text = ""
     txtR2.Text = ""
     
+    ' Reset option buttons.
     ResetOptions optVout
+    
+    ' Reset labels.
+    lblPower.Caption = ""
+    lblCurrent.Caption = ""
 End Sub
 
 ' Resets the option buttons.
@@ -214,6 +327,11 @@ Public Sub ResetOptions(optCaller As OptionButton)
     optR1.Value = (optCaller.Name = "optR1")
     optVout.Value = (optCaller.Name = "optVout")
     optR2.Value = (optCaller.Name = "optR2")
+End Sub
+
+' Calculate button clicked.
+Private Sub cmdCalculate_Click()
+    Calculate
 End Sub
 
 ' Reset button clicked.
