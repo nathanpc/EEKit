@@ -12,6 +12,19 @@ Begin VB.Form frmMain
    ScaleHeight     =   3495
    ScaleWidth      =   3015
    StartUpPosition =   3  'Windows Default
+   Begin VB.PictureBox picHelp 
+      Appearance      =   0  'Flat
+      BorderStyle     =   0  'None
+      ForeColor       =   &H80000008&
+      Height          =   255
+      Left            =   2640
+      Picture         =   "frmMain.frx":0000
+      ScaleHeight     =   255
+      ScaleWidth      =   255
+      TabIndex        =   20
+      Top             =   2640
+      Width           =   255
+   End
    Begin VB.TextBox txtVgnd 
       Alignment       =   1  'Right Justify
       Height          =   315
@@ -51,7 +64,7 @@ Begin VB.Form frmMain
       ForeColor       =   &H80000008&
       Height          =   2580
       Left            =   960
-      Picture         =   "frmMain.frx":0000
+      Picture         =   "frmMain.frx":0A02
       ScaleHeight     =   2580
       ScaleWidth      =   2055
       TabIndex        =   2
@@ -195,6 +208,15 @@ Attribute VB_Exposed = False
 ''' Author: Nathan Campos <nathan@innoveworkshop.com>
 
 Option Explicit
+
+' Shows a nice help dialog.
+Public Sub ShowHelp()
+    MsgBox "Enter values into all fields except for the one you want to calculate " & _
+        "for and either press Return or click on the Calculate button. " & vbCrLf & _
+        vbCrLf & "You always need to leave 1 field blank so that the calculator " & _
+        "knows what you want to calculate. You can also use the option buttons to " & _
+        "auto-clear a field before calculating.", vbOKOnly + vbInformation, "Help"
+End Sub
 
 ' Calculates the voltage divider parameters.
 Public Sub Calculate()
@@ -367,4 +389,9 @@ End Sub
 ' Vout option clicked.
 Private Sub optVout_Click()
     ResetOptions optVout
+End Sub
+
+' Help button clicked.
+Private Sub picHelp_Click()
+    ShowHelp
 End Sub
